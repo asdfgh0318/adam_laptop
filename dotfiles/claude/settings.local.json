@@ -18,7 +18,22 @@
       "Bash(dpkg:*)",
       "Bash(/home/adam-koszalka/ŻYCIE/VIBECODING/*.sh:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(gh repo create:*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": {},
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/adam-koszalka/ŻYCIE/VIBECODING/session-logger.sh",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   }
 }
