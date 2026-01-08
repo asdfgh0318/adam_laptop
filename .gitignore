@@ -1,0 +1,32 @@
+# Secrets and credentials
+*.password
+*.credentials
+.gmail-password
+.env
+.env.local
+credentials.json
+
+# Logs and backups
+*.log
+*.backup
+*.bak
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.sublime-*
+.idea/
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Cache directories
+__pycache__/
+.cache/
+node_modules/

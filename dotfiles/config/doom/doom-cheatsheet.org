@@ -1,0 +1,258 @@
+#+TITLE: Doom Emacs Cheatsheet
+#+AUTHOR: Adam Koszalka
+#+STARTUP: overview
+
+* Quick Reference
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC=     | Leader key (menu)   |
+| =SPC SPC= | Run command (M-x)   |
+| =SPC q q= | Quit Emacs          |
+| =SPC h=   | Help menu           |
+| =ESC=     | Cancel              |
+
+* Files & Buffers
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC .=   | Find file           |
+| =SPC f f= | Find file           |
+| =SPC f r= | Recent files        |
+| =SPC f s= | Save file           |
+| =SPC b b= | Switch buffer       |
+| =SPC b k= | Kill buffer         |
+| =SPC b n= | Next buffer         |
+| =SPC b p= | Previous buffer     |
+
+* Windows
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC w v= | Split vertical      |
+| =SPC w s= | Split horizontal    |
+| =SPC w w= | Switch window       |
+| =SPC w q= | Close window        |
+| =SPC w == | Balance windows     |
+| =C-h/j/k/l= | Move between windows |
+
+* Search
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC /=   | Search in project   |
+| =SPC s s= | Search buffer       |
+| =SPC s p= | Search project      |
+| =SPC s d= | Search directory    |
+| =/=       | Search in file (vim)|
+| =n / N=   | Next/prev match     |
+
+* Projects
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC p p= | Switch project      |
+| =SPC p f= | Find file in project|
+| =SPC p s= | Search in project   |
+| =SPC p t= | Open terminal       |
+
+* Treemacs (Sidebar)
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC o p= | Toggle treemacs     |
+| =SPC o P= | Find file in treemacs |
+
+Inside treemacs:
+| Key | Action       |
+|-----+--------------|
+| =o= | Open file    |
+| =q= | Quit         |
+| =r= | Rename       |
+| =d= | Delete       |
+| =c= | Create file  |
+| =R= | Refresh      |
+
+* Magit (Git)
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC g g= | Open Magit status   |
+| =SPC g b= | Blame               |
+| =SPC g l= | Log                 |
+
+Inside Magit:
+| Key   | Action         |
+|-------+----------------|
+| =s=   | Stage file     |
+| =u=   | Unstage        |
+| =c c= | Commit         |
+| =p p= | Push           |
+| =F p= | Pull           |
+| =b b= | Switch branch  |
+| =b c= | Create branch  |
+| =l l= | View log       |
+| =d d= | Diff           |
+| =q=   | Quit           |
+| =?=   | Help           |
+
+* Email (mu4e)
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC o m= | Open email          |
+
+Inside mu4e:
+| Key | Action         |
+|-----+----------------|
+| =U= | Update mail    |
+| =C= | Compose        |
+| =R= | Reply          |
+| =F= | Forward        |
+| =d= | Mark delete    |
+| =!= | Mark read      |
+| =?= | Mark unread    |
+| =x= | Execute marks  |
+| =q= | Quit           |
+| =s= | Search mail    |
+
+Sync mail from terminal:
+#+begin_src bash
+mbsync -a
+#+end_src
+
+* Zen Mode
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC t z= | Toggle zen mode     |
+
+* Pomodoro Timer
+
+In org-mode:
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC m p= | Start pomodoro      |
+
+- 25 min work → 5 min break
+- After 4 pomodoros → 15 min break
+
+* PDF Tools
+
+Open any PDF file - it opens automatically in Emacs.
+
+| Key   | Action           |
+|-------+------------------|
+| =n=   | Next page        |
+| =p=   | Previous page    |
+| =+=   | Zoom in          |
+| =-=   | Zoom out         |
+| =0=   | Reset zoom       |
+| =g=   | Go to page       |
+| =o=   | Outline (TOC)    |
+| =C-s= | Search           |
+| =a t= | Add text note    |
+| =a h= | Highlight        |
+
+* Org Mode
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC n a= | Org agenda          |
+| =SPC n n= | Org capture         |
+| =SPC m t= | Toggle TODO         |
+| =SPC m s= | Schedule            |
+| =SPC m d= | Deadline            |
+| =SPC m e= | Export              |
+
+In org file:
+| Key     | Action            |
+|---------+-------------------|
+| =TAB=   | Fold/unfold       |
+| =S-TAB= | Fold all          |
+| =M-RET= | New heading       |
+| =M-↑/↓= | Move heading      |
+| =t=     | Cycle TODO        |
+| =*=     | Toggle heading    |
+
+TODO states: =TODO= → =DONE=
+
+* Code / LSP
+
+| Key       | Action              |
+|-----------+---------------------|
+| =g d=     | Go to definition    |
+| =g r=     | Find references     |
+| =K=       | Show documentation  |
+| =SPC c a= | Code actions        |
+| =SPC c r= | Rename symbol       |
+| =SPC c f= | Format buffer       |
+
+* Terminal
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC o t= | Open terminal       |
+| =SPC o T= | Terminal here       |
+
+* Workspaces
+
+| Key       | Action              |
+|-----------+---------------------|
+| =SPC TAB n= | New workspace     |
+| =SPC TAB d= | Delete workspace  |
+| =SPC TAB 1-9= | Switch to workspace |
+| =SPC TAB TAB= | Switch workspace |
+
+* Vim Basics (Evil Mode)
+
+** Modes
+| Key   | Mode          |
+|-------+---------------|
+| =i=   | Insert mode   |
+| =v=   | Visual mode   |
+| =V=   | Visual line   |
+| =ESC= | Normal mode   |
+| =:=   | Command mode  |
+
+** Movement
+| Key     | Action          |
+|---------+-----------------|
+| =h/j/k/l= | ←/↓/↑/→       |
+| =w/b=   | Word forward/back |
+| =0 / $= | Line start/end  |
+| =gg=    | File start      |
+| =G=     | File end        |
+| =C-d/u= | Half page down/up |
+
+** Editing
+| Key   | Action              |
+|-------+---------------------|
+| =dd=  | Delete line         |
+| =yy=  | Copy line           |
+| =p=   | Paste               |
+| =u=   | Undo                |
+| =C-r= | Redo                |
+| =ciw= | Change inner word   |
+| =ci"= | Change inside quotes|
+| =>>=  | Indent              |
+| =<<=  | Unindent            |
+
+* Useful Commands
+
+=SPC SPC= then type:
+- =doom/reload= - Reload config
+- =doom/help= - Doom help
+- =describe-key= - What does key do?
+- =describe-function= - Function help
+
+* Daily Workflow
+
+1. Open project: =SPC p p=
+2. Find file: =SPC .= or =SPC p f=
+3. Toggle sidebar: =SPC o p=
+4. Git status: =SPC g g=
+5. Search project: =SPC /=
+6. Check email: =SPC o m=
+7. Start pomodoro: =SPC m p= (in org file)
+8. Zen mode for writing: =SPC t z=

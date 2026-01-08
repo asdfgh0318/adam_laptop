@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nmcli device:*)",
+      "Bash(wpctl get-volume:*)",
+      "Bash(sway -C)",
+      "Bash(sudo apt install:*)",
+      "Bash(sudo pacman:*)",
+      "Bash(sudo dnf install:*)",
+      "Bash(brightnessctl info:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(chmod:*)",
+      "Bash(journalctl:*)",
+      "Bash(lspci:*)",
+      "Bash(lsusb:*)",
+      "Bash(ls:*)",
+      "Bash(dpkg:*)",
+      "Bash(/home/adam-koszalka/ŻYCIE/VIBECODING/*.sh:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
