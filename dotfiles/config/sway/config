@@ -105,6 +105,10 @@ input type:keyboard {
     bindsym F1 exec brightnessctl set 5%-
     bindsym F2 exec brightnessctl set 5%+
 
+    # Keyboard backlight (use Fn+F5/F6 on MacBook)
+    bindsym F5 exec brightnessctl -d spi::kbd_backlight set 5%-
+    bindsym F6 exec brightnessctl -d spi::kbd_backlight set 5%+
+
 #
 # Moving around:
 #

@@ -16,20 +16,23 @@
       "Bash(lsusb:*)",
       "Bash(ls:*)",
       "Bash(dpkg:*)",
-      "Bash(/home/adam-koszalka/ŻYCIE/VIBECODING/*.sh:*)",
+      "Bash(/home/adam-koszalka/ŻYCIE/VIBECODING/vibecoding-logger/*.sh:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(gh repo create:*)"
+      "Bash(gh repo create:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(cat:*)"
     ]
   },
   "hooks": {
     "Stop": [
       {
-        "matcher": {},
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "/home/adam-koszalka/ŻYCIE/VIBECODING/session-logger.sh",
+            "command": "/home/adam-koszalka/ŻYCIE/VIBECODING/vibecoding-logger/session-logger.sh",
             "timeout": 5
           }
         ]
