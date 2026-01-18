@@ -22,7 +22,17 @@
       "Bash(gh repo create:*)",
       "Bash(git commit:*)",
       "Bash(git push)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(rpm:*)",
+      "Bash(pactl info:*)",
+      "Bash(pactl list sinks short:*)",
+      "Bash(pactl get-sink-mute:*)",
+      "Bash(pactl get-sink-volume:*)",
+      "Bash(aplay:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(dkms status:*)",
+      "Bash(lsmod:*)",
+      "Bash(git pull:*)"
     ]
   },
   "hooks": {
