@@ -32,7 +32,17 @@
       "WebFetch(domain:github.com)",
       "Bash(dkms status:*)",
       "Bash(lsmod:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(git clone:*)",
+      "Bash(cd:*)",
+      "Bash(WINEPREFIX=\"$HOME/.autodesk_fusion/wineprefixes/default\" wine:*)",
+      "Bash(WINEPREFIX=/home/adam-koszalka/.autodesk_fusion/wineprefixes/default wine:*)",
+      "Bash(WINEPREFIX=/home/adam-koszalka/.autodesk_fusion/wineprefixes/default winetricks:*)",
+      "Bash(wget:*)",
+      "Bash(update-desktop-database:*)",
+      "Bash(wine --version:*)",
+      "Bash(curl:*)",
+      "Bash(/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/runners/lutris-GE-Proton8-26-x86_64/bin/wine:*)"
     ]
   },
   "hooks": {
