@@ -42,7 +42,29 @@
       "Bash(update-desktop-database:*)",
       "Bash(wine --version:*)",
       "Bash(curl:*)",
-      "Bash(/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/runners/lutris-GE-Proton8-26-x86_64/bin/wine:*)"
+      "Bash(/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/runners/lutris-GE-Proton8-26-x86_64/bin/wine:*)",
+      "Bash(WINEPREFIX=/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/bottles/Fusion360 WINEARCH=win64 /home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/runners/lutris-GE-Proton8-26-x86_64/bin/wine wineboot:*)",
+      "Bash(WINEPREFIX=/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/bottles/Fusion360 WINEARCH=win64 /home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/runners/lutris-GE-Proton8-26-x86_64/bin/wine:*)",
+      "Bash(WINEPREFIX=/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/bottles/Fusion360 winetricks:*)",
+      "Bash(WINEPREFIX=/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/bottles/Fusion360 WINE=/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/runners/lutris-GE-Proton8-26-x86_64/bin/wine winetricks:*)",
+      "Bash(export WINEPREFIX=/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/bottles/Fusion360:*)",
+      "Bash(winetricks:*)",
+      "WebSearch",
+      "WebFetch(domain:xhyrom.vercel.app)",
+      "WebFetch(domain:hackaday.com)",
+      "Bash(pgrep:*)",
+      "Bash(export WINEPREFIX=\"$HOME/.var/app/com.usebottles.bottles/data/bottles/bottles/Fusion360\")",
+      "Bash(export WINE=\"$HOME/.var/app/com.usebottles.bottles/data/bottles/runners/caffe-9.7-x86_64/bin/wine64\")",
+      "Bash($WINE --version)",
+      "Bash(wmctrl -l:*)",
+      "Bash(xdotool search:*)",
+      "Bash(\"/home/adam-koszalka/.var/app/com.usebottles.bottles/data/bottles/runners/caffe-9.7-x86_64/bin/wineserver\" -k)",
+      "Bash(killall:*)",
+      "Bash(echo:*)",
+      "Bash(WINEPREFIX=\"$HOME/.wineprefixes/fusion360-clean\" \"$HOME/.var/app/com.usebottles.bottles/data/bottles/runners/caffe-9.7-x86_64/bin/wine64\" reg add \"HKEY_CLASSES_ROOT\\\\http\\\\shell\\\\open\\\\command\" /ve /d \"winebrowser \"\"%1\"\"\" /f)",
+      "Bash(WINEPREFIX=\"$HOME/.wineprefixes/fusion360-clean\" \"$HOME/.var/app/com.usebottles.bottles/data/bottles/runners/caffe-9.7-x86_64/bin/wine64\" reg add \"HKEY_CLASSES_ROOT\\\\https\\\\shell\\\\open\\\\command\" /ve /d \"winebrowser \"\"%1\"\"\" /f)",
+      "Bash(xdg-open:*)",
+      "Bash(./autodesk_fusion_installer_x86-64.sh:*)"
     ]
   },
   "hooks": {
@@ -52,8 +74,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/adam-koszalka/ŻYCIE/VIBECODING/vibecoding-logger/session-logger.sh",
-            "timeout": 5
+            "command": "/home/adam-koszalka/ŻYCIE/VIBECODING/vibecoding-logger/full-session-log.sh",
+            "timeout": 10
           }
         ]
       }

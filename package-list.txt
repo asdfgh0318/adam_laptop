@@ -58,6 +58,7 @@ binfmt-support					install
 binutils					install
 binutils-common:amd64				install
 binutils-x86-64-linux-gnu			install
+blt						install
 blueman						install
 bluez						install
 bluez-cups					install
@@ -2883,6 +2884,7 @@ python3-olefile					install
 python3-paramiko				install
 python3-pexpect					install
 python3-pil:amd64				install
+python3-pil.imagetk:amd64			install
 python3-pip					install
 python3-pip-whl					install
 python3-pkg-resources				install
@@ -2908,6 +2910,7 @@ python3-sss					install
 python3-systemd					install
 python3-talloc:amd64				install
 python3-tdb					install
+python3-tk:amd64				install
 python3-tz					install
 python3-uno					install
 python3-update-manager				install
@@ -3065,6 +3068,7 @@ time						install
 tipa						install
 tk						install
 tk8.6						install
+tk8.6-blt2.5					install
 tnftp						install
 totem						install
 totem-common					install
