@@ -8,7 +8,7 @@ source scripts/common.sh
 
 require_not_root
 
-print_header "adam_laptop Setup - MacBook 10,1 / Ubuntu"
+print_header "adam_laptop Setup - Multi-Hardware Ubuntu + Sway"
 
 # Hardware detection
 print_hardware_info
@@ -16,6 +16,8 @@ print_hardware_info
 # Detect hardware type
 if is_macbook; then
     HARDWARE="macbook"
+elif is_thinkpad; then
+    HARDWARE="thinkpad"
 else
     HARDWARE="generic"
 fi
@@ -38,6 +40,8 @@ case $install_type in
         bash scripts/01-sway.sh
         if [ "$HARDWARE" = "macbook" ]; then
             bash scripts/02-drivers-macbook.sh
+        elif [ "$HARDWARE" = "thinkpad" ]; then
+            bash scripts/02-drivers-t480s.sh
         else
             bash scripts/03-drivers-generic.sh
         fi
@@ -52,6 +56,8 @@ case $install_type in
         bash scripts/01-sway.sh
         if [ "$HARDWARE" = "macbook" ]; then
             bash scripts/02-drivers-macbook.sh
+        elif [ "$HARDWARE" = "thinkpad" ]; then
+            bash scripts/02-drivers-t480s.sh
         else
             bash scripts/03-drivers-generic.sh
         fi
@@ -118,3 +124,12 @@ log_info "  Mod+Shift+s   - bdmenu_ada launcher"
 log_info "  Mod+Shift+e   - Exit Sway"
 echo ""
 log_warn "If WiFi doesn't work, reboot first!"
+
+if [ "$HARDWARE" = "thinkpad" ]; then
+    echo ""
+    log_info "ThinkPad-specific tips:"
+    log_info "  - Run 'fprintd-enroll' to set up fingerprint login"
+    log_info "  - TLP is managing power - check with: sudo tlp-stat -b"
+    log_info "  - Battery thresholds set to 75%-80% for longevity"
+    log_info "  - Authorize Thunderbolt devices with: boltctl"
+fi

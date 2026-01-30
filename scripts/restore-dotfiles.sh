@@ -64,12 +64,16 @@ if [ -f "$REPO_DIR/session-logger.sh" ]; then
     log_success "session-logger.sh restored"
 fi
 
-# Modprobe configs (requires sudo)
+# Modprobe configs (requires sudo) - MacBook only
 log_step "Restoring modprobe configuration..."
-if [ -f "$DOTFILES/etc/modprobe.d/broadcom-sta-dkms.conf" ]; then
-    log_info "Copying Broadcom WiFi blacklist (requires sudo)..."
-    sudo cp "$DOTFILES/etc/modprobe.d/broadcom-sta-dkms.conf" /etc/modprobe.d/
-    log_success "Broadcom blacklist config restored"
+if is_macbook; then
+    if [ -f "$DOTFILES/etc/modprobe.d/broadcom-sta-dkms.conf" ]; then
+        log_info "Copying Broadcom WiFi blacklist (requires sudo)..."
+        sudo cp "$DOTFILES/etc/modprobe.d/broadcom-sta-dkms.conf" /etc/modprobe.d/
+        log_success "Broadcom blacklist config restored"
+    fi
+else
+    log_info "Non-MacBook hardware - skipping Broadcom modprobe config"
 fi
 
 log_success "All dotfiles restored!"

@@ -62,19 +62,22 @@ if [ -f "$HOME/ŻYCIE/VIBECODING/session-logger.sh" ]; then
     log_success "session-logger.sh backed up"
 fi
 
-# Modprobe configs (read with sudo if needed)
+# Modprobe configs (read with sudo if needed) - MacBook only
 log_step "Backing up modprobe configuration..."
-ensure_dir "$DOTFILES/etc/modprobe.d"
-if [ -f "/etc/modprobe.d/broadcom-sta-dkms.conf" ]; then
-    # Try without sudo first
-    if cp "/etc/modprobe.d/broadcom-sta-dkms.conf" "$DOTFILES/etc/modprobe.d/" 2>/dev/null; then
-        log_success "Broadcom blacklist config backed up"
-    else
-        log_info "Copying Broadcom config (requires sudo)..."
-        sudo cp "/etc/modprobe.d/broadcom-sta-dkms.conf" "$DOTFILES/etc/modprobe.d/"
-        sudo chown "$USER:$USER" "$DOTFILES/etc/modprobe.d/broadcom-sta-dkms.conf"
-        log_success "Broadcom blacklist config backed up"
+if is_macbook; then
+    ensure_dir "$DOTFILES/etc/modprobe.d"
+    if [ -f "/etc/modprobe.d/broadcom-sta-dkms.conf" ]; then
+        if cp "/etc/modprobe.d/broadcom-sta-dkms.conf" "$DOTFILES/etc/modprobe.d/" 2>/dev/null; then
+            log_success "Broadcom blacklist config backed up"
+        else
+            log_info "Copying Broadcom config (requires sudo)..."
+            sudo cp "/etc/modprobe.d/broadcom-sta-dkms.conf" "$DOTFILES/etc/modprobe.d/"
+            sudo chown "$USER:$USER" "$DOTFILES/etc/modprobe.d/broadcom-sta-dkms.conf"
+            log_success "Broadcom blacklist config backed up"
+        fi
     fi
+else
+    log_info "Non-MacBook hardware - skipping Broadcom modprobe backup"
 fi
 
 # Package list snapshots

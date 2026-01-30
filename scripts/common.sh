@@ -57,6 +57,26 @@ is_macbook() {
     grep -qi "MacBook\|Apple" /sys/class/dmi/id/sys_vendor 2>/dev/null
 }
 
+# Detect if running on ThinkPad hardware
+is_thinkpad() {
+    grep -qi "ThinkPad" /sys/class/dmi/id/product_name 2>/dev/null
+}
+
+# Detect ThinkPad T480s specifically
+is_thinkpad_t480s() {
+    grep -qi "T480s" /sys/class/dmi/id/product_name 2>/dev/null
+}
+
+# Detect Intel WiFi chipset
+has_intel_wifi() {
+    lspci 2>/dev/null | grep -qi "Intel.*Wireless\|Intel.*Wi-Fi\|Intel.*WiFi"
+}
+
+# Detect fingerprint reader
+has_fingerprint_reader() {
+    lsusb 2>/dev/null | grep -qi "Fingerprint\|Validity\|06cb:"
+}
+
 # Detect Broadcom WiFi chipset
 has_broadcom_wifi() {
     lspci 2>/dev/null | grep -qi "BCM43"
@@ -121,12 +141,24 @@ print_hardware_info() {
 
     if is_macbook; then
         log_success "Platform: MacBook (Apple)"
+    elif is_thinkpad; then
+        local model
+        model=$(cat /sys/class/dmi/id/product_name 2>/dev/null || echo "Unknown")
+        log_success "Platform: Lenovo ThinkPad ($model)"
     else
         log_info "Platform: Generic PC"
     fi
 
     if has_broadcom_wifi; then
         log_info "WiFi: Broadcom (will use wl driver)"
+    fi
+
+    if has_intel_wifi; then
+        log_info "WiFi: Intel (iwlwifi - works with linux-firmware)"
+    fi
+
+    if has_fingerprint_reader; then
+        log_info "Fingerprint: Reader detected (fprintd available)"
     fi
 
     if has_intel_graphics; then

@@ -5,20 +5,20 @@ All notable changes to this setup will be documented in this file.
 ## [Unreleased]
 
 ### Added
-- Initial repository structure
-- Sway configuration with safety yellow theme
-- Custom status bar script (btop-style colors)
-- Doom Emacs configuration (email, pomodoro, PDF, magit)
-- Claude Code session logging hook
-- MacBook 10,1 driver support (Broadcom WiFi)
-- Modular installation scripts
-- update.sh with bidirectional sync
+- ThinkPad T480s hardware support (`scripts/02-drivers-t480s.sh`)
+- ThinkPad detection functions in `scripts/common.sh` (is_thinkpad, is_thinkpad_t480s, has_intel_wifi, has_fingerprint_reader)
+- Three-way hardware routing in `install.sh` (MacBook / ThinkPad / Generic)
+- XF86MonBrightness and XF86KbdBrightness keybindings in sway config
+- TrackPoint middle-button scrolling configuration
+- Touchpad tap-to-click and natural scroll configuration
+- ThinkPad T480s hardware documentation (`docs/HARDWARE-T480s.md`)
+- SSD transplant guide (`docs/SSD-TRANSPLANT-T480s.md`)
 
 ### Changed
-- (none yet)
-
-### Fixed
-- (none yet)
+- `install.sh` header now says "Multi-Hardware" instead of "MacBook 10,1"
+- Broadcom modprobe config in restore/backup scripts now conditional on MacBook
+- Battery detection in status.sh now auto-detects BAT path
+- Hardware info display now shows ThinkPad model name
 
 ---
 

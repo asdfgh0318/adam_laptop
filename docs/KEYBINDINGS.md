@@ -70,14 +70,29 @@
 
 ### Media Keys
 
-| Key | Action |
-|-----|--------|
-| `XF86AudioMute` | Toggle mute |
-| `XF86AudioLowerVolume` | Volume down 5% |
-| `XF86AudioRaiseVolume` | Volume up 5% |
-| `XF86AudioMicMute` | Toggle mic mute |
-| `F1` | Brightness down 5% |
-| `F2` | Brightness up 5% |
+| Key | Action | Platform |
+|-----|--------|----------|
+| `XF86AudioMute` | Toggle mute | All |
+| `XF86AudioLowerVolume` | Volume down 5% | All |
+| `XF86AudioRaiseVolume` | Volume up 5% | All |
+| `XF86AudioMicMute` | Toggle mic mute | All |
+| `F1` | Brightness down 5% | MacBook |
+| `F2` | Brightness up 5% | MacBook |
+| `XF86MonBrightnessDown` | Brightness down 5% | ThinkPad/Generic |
+| `XF86MonBrightnessUp` | Brightness up 5% | ThinkPad/Generic |
+| `F5` | Kbd backlight down | MacBook |
+| `F6` | Kbd backlight up | MacBook |
+| `XF86KbdBrightnessDown` | Kbd backlight down | ThinkPad |
+| `XF86KbdBrightnessUp` | Kbd backlight up | ThinkPad |
+
+### Input Devices (ThinkPad)
+
+| Device | Feature | Setting |
+|--------|---------|---------|
+| TrackPoint | Middle-button scroll | Hold middle button + move TrackPoint |
+| Touchpad | Tap to click | Single tap = left click |
+| Touchpad | Natural scroll | Two-finger scroll, content follows fingers |
+| Touchpad | Disable while typing | dwt enabled |
 
 ---
 
