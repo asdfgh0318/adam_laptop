@@ -29,21 +29,11 @@ while true; do
         wifi_ssid=$(iwgetid -r 2>/dev/null || echo "down")
         [ -z "$wifi_ssid" ] && wifi_ssid="down"
 
-        # Battery - auto-detect battery path
-        bat_path=""
-        for bp in /sys/class/power_supply/BAT0 /sys/class/power_supply/BAT1; do
-            [ -d "$bp" ] && bat_path="$bp" && break
-        done
-        if [ -n "$bat_path" ]; then
-            bat_cap=$(cat "$bat_path/capacity" 2>/dev/null || echo "N/A")
-            bat_volt=$(LC_ALL=C awk '{printf "%.2f", $1/1000000}' "$bat_path/voltage_now" 2>/dev/null || echo "N/A")
-            bat_status=$(cat "$bat_path/status" 2>/dev/null)
-            [ "$bat_status" = "Charging" ] && bat_icon="+" || bat_icon=""
-        else
-            bat_cap="N/A"
-            bat_volt="N/A"
-            bat_icon=""
-        fi
+        # Battery
+        bat_cap=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo "N/A")
+        bat_volt=$(LC_ALL=C awk '{printf "%.2f", $1/1000000}' /sys/class/power_supply/BAT0/voltage_now 2>/dev/null || echo "N/A")
+        bat_status=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null)
+        [ "$bat_status" = "Charging" ] && bat_icon="+" || bat_icon=""
 
         # Disk
         disk=$(df -h / | awk 'NR==2 {print $4}')

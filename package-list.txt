@@ -3010,6 +3010,7 @@ spice-vdagent					install
 spirv-tools					install
 sqlite3						install
 squashfs-tools					install
+sshpass						install
 ssl-cert					install
 sssd						install
 sssd-ad						install

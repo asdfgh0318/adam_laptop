@@ -66,25 +66,6 @@ input type:keyboard {
     repeat_rate 40
 }
 
-# ThinkPad TrackPoint - middle-button scrolling (classic ThinkPad behavior)
-input type:pointer {
-    scroll_method on_button_down
-    scroll_button 274
-    accel_profile flat
-    pointer_accel 0.0
-}
-
-# Touchpad configuration (ThinkPad + any laptop with touchpad)
-input type:touchpad {
-    tap enabled
-    tap_button_map lrm
-    natural_scroll enabled
-    dwt enabled
-    middle_emulation enabled
-    scroll_method two_finger
-    click_method clickfinger
-}
-
 ### Key bindings
 #
 # Basics:
@@ -120,21 +101,13 @@ input type:touchpad {
     bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
     bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
-    # === Brightness controls ===
-    # MacBook: Fn+F1/F2 sends raw F1/F2 keycodes
+    # Brightness controls (use Fn+F1/F2 on MacBook)
     bindsym F1 exec brightnessctl set 5%-
     bindsym F2 exec brightnessctl set 5%+
-    # ThinkPad/Generic: Standard XF86 brightness keys
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 
-    # === Keyboard backlight ===
-    # MacBook: spi::kbd_backlight (via Fn+F5/F6 raw keycodes)
+    # Keyboard backlight (use Fn+F5/F6 on MacBook)
     bindsym F5 exec brightnessctl -d spi::kbd_backlight set 5%-
     bindsym F6 exec brightnessctl -d spi::kbd_backlight set 5%+
-    # ThinkPad: tpacpi::kbd_backlight (toggles 0/1/2 levels)
-    bindsym XF86KbdBrightnessDown exec brightnessctl -d tpacpi::kbd_backlight set 1-
-    bindsym XF86KbdBrightnessUp exec brightnessctl -d tpacpi::kbd_backlight set 1+
 
 #
 # Moving around:
