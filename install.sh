@@ -22,6 +22,56 @@ else
     HARDWARE="generic"
 fi
 
+# Sync ŻYCIE personal files from GitHub (private repo)
+ZYCIE_REPO="https://github.com/asdfgh0318/zycie.git"
+ZYCIE_DIR="$HOME/ŻYCIE"
+
+print_header "ŻYCIE Sync"
+if [ ! -d "$ZYCIE_DIR" ]; then
+    # No ŻYCIE directory - clone from GitHub
+    log_step "Cloning ŻYCIE from GitHub..."
+    if cmd_exists gh; then
+        gh repo clone asdfgh0318/zycie "$ZYCIE_DIR"
+    else
+        git clone "$ZYCIE_REPO" "$ZYCIE_DIR"
+    fi
+    log_success "ŻYCIE cloned to $ZYCIE_DIR"
+elif [ ! -d "$ZYCIE_DIR/.git" ]; then
+    # ŻYCIE exists but is not a git repo - init and merge with remote
+    log_step "ŻYCIE exists but is not a git repo. Merging with GitHub..."
+    cd "$ZYCIE_DIR"
+    git init
+    git branch -m main
+    git add .
+    git commit -m "Local ŻYCIE snapshot before merge" || true
+    git remote add origin "$ZYCIE_REPO"
+    git fetch origin
+    git merge origin/main --allow-unrelated-histories --no-edit || {
+        log_warn "Merge conflicts detected. Keeping local versions of conflicting files."
+        git checkout --ours . 2>/dev/null || true
+        git add .
+        git commit -m "Merged with GitHub (local files preferred)" || true
+    }
+    git push -u origin main || log_warn "Push failed - authenticate with 'gh auth login' and retry"
+    cd "$(dirname "$0")"
+    log_success "ŻYCIE merged and synced"
+else
+    # ŻYCIE is already a git repo - pull latest and push local changes
+    log_step "Syncing ŻYCIE with GitHub..."
+    cd "$ZYCIE_DIR"
+    git add . 2>/dev/null
+    git commit -m "Auto-sync: local changes before pull" 2>/dev/null || true
+    git pull --no-edit origin main 2>/dev/null || {
+        log_warn "Pull had conflicts. Keeping local versions."
+        git checkout --ours . 2>/dev/null || true
+        git add .
+        git commit -m "Resolved conflicts (local preferred)" || true
+    }
+    git push origin main 2>/dev/null || log_warn "Push failed - check GitHub auth"
+    cd "$(dirname "$0")"
+    log_success "ŻYCIE synced with GitHub"
+fi
+
 # Installation menu
 echo "Select installation type:"
 echo ""
@@ -93,6 +143,8 @@ case $install_type in
         if [[ ! "$do_drivers" =~ ^[Nn] ]]; then
             if [ "$HARDWARE" = "macbook" ]; then
                 bash scripts/02-drivers-macbook.sh
+            elif [ "$HARDWARE" = "thinkpad" ]; then
+                bash scripts/02-drivers-t480s.sh
             else
                 bash scripts/03-drivers-generic.sh
             fi
