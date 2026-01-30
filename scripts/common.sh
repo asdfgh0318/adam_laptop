@@ -59,12 +59,14 @@ is_macbook() {
 
 # Detect if running on ThinkPad hardware
 is_thinkpad() {
-    grep -qi "ThinkPad" /sys/class/dmi/id/product_name 2>/dev/null
+    grep -qi "ThinkPad" /sys/class/dmi/id/product_name 2>/dev/null || \
+    grep -qi "ThinkPad" /sys/class/dmi/id/product_family 2>/dev/null
 }
 
 # Detect ThinkPad T480s specifically
 is_thinkpad_t480s() {
-    grep -qi "T480s" /sys/class/dmi/id/product_name 2>/dev/null
+    grep -qi "T480s" /sys/class/dmi/id/product_name 2>/dev/null || \
+    grep -qi "T480s" /sys/class/dmi/id/product_family 2>/dev/null
 }
 
 # Detect Intel WiFi chipset
