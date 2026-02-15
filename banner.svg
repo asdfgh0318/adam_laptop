@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="50%" stop-color="#20201a"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#eab308" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#eab308" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#eab308" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#eab308" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#eab308" stop-opacity="0.6"/>
+      <stop offset="80%" stop-color="#eab308" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#eab308" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="120" fill="url(#bg)"/>
+  <rect y="90" width="1200" height="30" fill="url(#accent)"/>
+
+  <!-- Decorative dots -->
+  <circle cx="981" cy="59" r="1" fill="#eab308" opacity="0.03"/>
+<circle cx="962" cy="108" r="2" fill="#eab308" opacity="0.04"/>
+<circle cx="943" cy="57" r="3" fill="#eab308" opacity="0.05"/>
+<circle cx="924" cy="106" r="1" fill="#eab308" opacity="0.06"/>
+<circle cx="905" cy="55" r="2" fill="#eab308" opacity="0.07"/>
+<circle cx="886" cy="104" r="3" fill="#eab308" opacity="0.03"/>
+<circle cx="867" cy="53" r="1" fill="#eab308" opacity="0.04"/>
+<circle cx="848" cy="102" r="2" fill="#eab308" opacity="0.05"/>
+<circle cx="829" cy="51" r="3" fill="#eab308" opacity="0.06"/>
+<circle cx="810" cy="100" r="1" fill="#eab308" opacity="0.07"/>
+<circle cx="791" cy="49" r="2" fill="#eab308" opacity="0.03"/>
+<circle cx="772" cy="98" r="3" fill="#eab308" opacity="0.04"/>
+
+
+  <!-- Accent line -->
+  <line x1="0" y1="118" x2="1200" y2="118" stroke="url(#line)" stroke-width="2"/>
+
+  <!-- Icon -->
+  <g color="#eab308">
+    <g transform="translate(75,35) scale(0.9)" opacity="0.12">
+      <rect x="5" y="0" width="55" height="38" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <rect x="10" y="5" width="45" height="28" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M0,42 L5,38 L60,38 L65,42 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    </g>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="52" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="32" font-weight="700" fill="#e6edf3" text-anchor="middle" letter-spacing="1">Adam Laptop</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="78" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="14" fill="#8b949e" text-anchor="middle" letter-spacing="0.5">MacBook 10,1 Ubuntu + Sway backup & replication</text>
+</svg>

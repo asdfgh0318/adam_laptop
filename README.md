@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="banner.svg" alt="adam_laptop banner" width="100%">
+</p>
+
 # adam_laptop
 
 Complete backup and replication system for **MacBook 10,1** running **Ubuntu 24.04** with **Sway** window manager.
