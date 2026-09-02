@@ -1,0 +1,41 @@
+#cloud-config
+# Unattended Ubuntu 24.04 desktop install for the GPD Pocket 3.
+# Picked from the Ventoy menu as the "auto" template. WIPES THE LARGEST DISK.
+autoinstall:
+  version: 1
+  locale: pl_PL.UTF-8
+  keyboard:
+    layout: pl
+  timezone: Europe/Warsaw
+  source:
+    id: ubuntu-desktop
+  identity:
+    hostname: pocket3
+    username: adam
+    realname: Adam
+    # temporary password "pocket3" -- change it on first login:  passwd
+    password: "$6$He.QaZxu7RM2wL/Y$t4C1TSi5PIzHP3qg8AH82q/Z01mb8SADEb82TdfNTTBdZYSbENXDHeMgzGM6MSKPgiDi7EHaHdpqS78mLlub21"
+  storage:
+    layout:
+      name: direct
+      # never the 30 GB USB stick: the internal SSD is always the largest disk
+      match:
+        size: largest
+  updates: security
+  codecs:
+    install: true
+  drivers:
+    install: true
+  late-commands:
+    # 1. bring the payload onto the installed system
+    - mkdir -p /mnt/vt && (mount -o ro /dev/disk/by-label/Ventoy /mnt/vt || mount -o ro "$(blkid -L Ventoy)" /mnt/vt)
+    - cp -r /mnt/vt/PAYLOAD /target/home/adam/pocket3-payload
+    - chmod +x /target/home/adam/pocket3-payload/setup-pocket3.sh /target/home/adam/pocket3-payload/autoinstall/firstboot.sh
+    - curtin in-target -- chown -R adam:adam /home/adam/pocket3-payload
+    # 2. first-boot service: waits for network, runs setup-pocket3.sh as adam, cleans up after itself
+    - cp /target/home/adam/pocket3-payload/autoinstall/pocket3-firstboot.service /target/etc/systemd/system/
+    - curtin in-target -- systemctl enable pocket3-firstboot.service
+    # 3. passwordless sudo ONLY for the duration of the first-boot run (firstboot.sh deletes it)
+    - cp /target/home/adam/pocket3-payload/autoinstall/90-pocket3-firstboot.sudoers /target/etc/sudoers.d/90-pocket3-firstboot
+    - chmod 440 /target/etc/sudoers.d/90-pocket3-firstboot
+    - umount /mnt/vt || true
