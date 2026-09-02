@@ -11,6 +11,8 @@
 # recover from a phase that failed halfway.
 
 set -uo pipefail
+export DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a
+# NONINTERACTIVE=1 is set by autoinstall/firstboot.sh; apt/snap get no prompts either way.
 PAYLOAD="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG="$HOME/setup-pocket3.log"
 FAILED=()

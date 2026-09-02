@@ -39,6 +39,16 @@ rsync -avh --progress adam@<precision-5520>:~/Papers ~/
 # or point Syncthing at the folders you actually want on a handheld
 ```
 
+## 3b. If you used the unattended install
+
+- **Change the password.** It is `pocket3` and it is written in a plaintext file
+  on this stick (`autoinstall/user-data`, hashed, but the plaintext is in this
+  sentence). `passwd` on first login.
+- `sudo` asks for no password until the first-boot service finishes. Check that
+  `/etc/sudoers.d/90-pocket3-firstboot` is gone afterwards:
+  `ls /etc/sudoers.d/` — if it is still there, `sudo rm` it.
+- The whole run is logged in `~/setup-pocket3-firstboot.log`.
+
 ## 4. First-boot reality
 
 - Phase 2 downloads **several GB** of packages. Be on wifi you trust and plugged in.
