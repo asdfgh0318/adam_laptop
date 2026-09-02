@@ -1,0 +1,15 @@
+steam-launcher
+steam-libs-amd64
+steam-libs-i386:i386
+virtualbox-7.0
+qemu-system-x86
+qemu-utils
+virt-manager
+swtpm
+ovmf
+linux-headers-6.8.0-50-generic
+linux-headers-liquorix-amd64
+memtest86+
+os-prober
+grub-pc
+grub-pc-bin

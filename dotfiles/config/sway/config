@@ -25,13 +25,22 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/adam/.local/share/backgrounds/2023-07-08-23-48-05-PXL_20220525_111527965.MP.jpg fill
 #
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Window rules
+
+# Beeper always lives in the scratchpad as a floating window.
+# $mod+minus toggles it, $mod+Shift+minus sends it back.
+# NOTE: app_id only. A [class="..."] rule here would match every native
+# Wayland window (they have no class) and vacuum the workspace into the
+# scratchpad.
+for_window [app_id="^Beeper$"] floating enable, resize set width 1200 px height 800 px, move scratchpad
 
 ### Idle configuration
 #
@@ -64,6 +73,25 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 input type:keyboard {
     repeat_delay 200
     repeat_rate 40
+}
+
+# ThinkPad TrackPoint - middle-button scrolling (classic ThinkPad behavior)
+input type:pointer {
+    scroll_method on_button_down
+    scroll_button 274
+    accel_profile flat
+    pointer_accel 0.0
+}
+
+# Touchpad configuration (ThinkPad + any laptop with touchpad)
+input type:touchpad {
+    tap enabled
+    tap_button_map lrm
+    natural_scroll enabled
+    dwt enabled
+    middle_emulation enabled
+    scroll_method two_finger
+    click_method clickfinger
 }
 
 ### Key bindings
@@ -101,13 +129,21 @@ input type:keyboard {
     bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
     bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
-    # Brightness controls (use Fn+F1/F2 on MacBook)
+    # === Brightness controls ===
+    # MacBook: Fn+F1/F2 sends raw F1/F2 keycodes
     bindsym F1 exec brightnessctl set 5%-
     bindsym F2 exec brightnessctl set 5%+
+    # ThinkPad/Generic: Standard XF86 brightness keys
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 
-    # Keyboard backlight (use Fn+F5/F6 on MacBook)
+    # === Keyboard backlight ===
+    # MacBook: spi::kbd_backlight (via Fn+F5/F6 raw keycodes)
     bindsym F5 exec brightnessctl -d spi::kbd_backlight set 5%-
     bindsym F6 exec brightnessctl -d spi::kbd_backlight set 5%+
+    # ThinkPad: tpacpi::kbd_backlight (toggles 0/1/2 levels)
+    bindsym XF86KbdBrightnessDown exec brightnessctl -d tpacpi::kbd_backlight set 1-
+    bindsym XF86KbdBrightnessUp exec brightnessctl -d tpacpi::kbd_backlight set 1+
 
 #
 # Moving around:
@@ -258,5 +294,8 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+# Screenshot: Print Screen to select area, save to ~/Obrazy
+bindsym Print exec grim -g "$(slurp)" ~/Obrazy/screenshot_$(date +%Y%m%d_%H%M%S).png
 
 include /etc/sway/config.d/*

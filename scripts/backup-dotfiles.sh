@@ -40,6 +40,19 @@ if [ -d "$HOME/.config/doom" ]; then
     fi
 fi
 
+# foot terminal colours
+ensure_dir "$DOTFILES/config/foot"
+[ -f "$HOME/.config/foot/foot.ini" ] && cp "$HOME/.config/foot/foot.ini" "$DOTFILES/config/foot/" && log_success "foot.ini backed up"
+
+# bashrc additions (everything after Ubuntu's stock block), /home/<user> -> $HOME
+if grep -q 'if ! shopt -oq posix' "$HOME/.bashrc"; then
+    start=$(grep -n 'if ! shopt -oq posix' "$HOME/.bashrc" | cut -d: -f1)
+    end=$(awk -v s="$start" 'NR>s && /^fi$/ {print NR; exit}' "$HOME/.bashrc")
+    { echo "# ---- bashrc additions (captured by backup-dotfiles.sh) ----"
+      sed -n "$((end+1)),\$p" "$HOME/.bashrc" | sed "s|$HOME/|\$HOME/|g"; } > "$DOTFILES/bashrc-additions.sh"
+    log_success "bashrc additions backed up"
+fi
+
 # GTK settings
 log_step "Backing up GTK settings..."
 ensure_dir "$DOTFILES/config/gtk-3.0"
@@ -84,6 +97,15 @@ fi
 log_step "Creating package list snapshots..."
 dpkg --get-selections > "$REPO_DIR/package-list.txt"
 log_success "Full package list saved to package-list.txt"
+
+# Manifests that setup-pocket3.sh actually installs from
+ensure_dir "$REPO_DIR/manifests"
+apt-mark showmanual | sort -u | grep -vxF -f "$REPO_DIR/manifests/apt-exclude.txt" > "$REPO_DIR/manifests/apt-packages.txt" 2>/dev/null || apt-mark showmanual | sort -u > "$REPO_DIR/manifests/apt-packages.txt"
+snap list 2>/dev/null | tail -n +2 | awk '{print $1}' | grep -vxF -f "$REPO_DIR/manifests/snap-exclude.txt" > "$REPO_DIR/manifests/snaps.txt" 2>/dev/null || true
+snap list 2>/dev/null | tail -n +2 | awk '$6 ~ /classic/ {print $1}' > "$REPO_DIR/manifests/snaps-classic.txt"
+flatpak list --app --columns=application 2>/dev/null > "$REPO_DIR/manifests/flatpaks.txt" || true
+pip3 list --user --format=freeze 2>/dev/null > "$REPO_DIR/manifests/pip-user.txt" || true
+log_success "manifests/ regenerated ($(wc -l < "$REPO_DIR/manifests/apt-packages.txt") apt, $(wc -l < "$REPO_DIR/manifests/snaps.txt") snaps)"
 
 apt list --installed 2>/dev/null | grep -E 'sway|waybar|wofi|bemenu|foot|pipewire|emacs|doom' > "$REPO_DIR/key-packages.txt" || true
 log_success "Key packages saved to key-packages.txt"

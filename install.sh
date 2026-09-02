@@ -18,6 +18,8 @@ if is_macbook; then
     HARDWARE="macbook"
 elif is_thinkpad; then
     HARDWARE="thinkpad"
+elif is_gpd_pocket3; then
+    HARDWARE="pocket3"
 else
     HARDWARE="generic"
 fi
@@ -92,6 +94,8 @@ case $install_type in
             bash scripts/02-drivers-macbook.sh
         elif [ "$HARDWARE" = "thinkpad" ]; then
             bash scripts/02-drivers-t480s.sh
+        elif [ "$HARDWARE" = "pocket3" ]; then
+            bash scripts/02-drivers-pocket3.sh
         else
             bash scripts/03-drivers-generic.sh
         fi
@@ -108,6 +112,8 @@ case $install_type in
             bash scripts/02-drivers-macbook.sh
         elif [ "$HARDWARE" = "thinkpad" ]; then
             bash scripts/02-drivers-t480s.sh
+        elif [ "$HARDWARE" = "pocket3" ]; then
+            bash scripts/02-drivers-pocket3.sh
         else
             bash scripts/03-drivers-generic.sh
         fi
@@ -145,6 +151,8 @@ case $install_type in
                 bash scripts/02-drivers-macbook.sh
             elif [ "$HARDWARE" = "thinkpad" ]; then
                 bash scripts/02-drivers-t480s.sh
+            elif [ "$HARDWARE" = "pocket3" ]; then
+                bash scripts/02-drivers-pocket3.sh
             else
                 bash scripts/03-drivers-generic.sh
             fi

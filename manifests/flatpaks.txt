@@ -1,0 +1,4 @@
+com.bambulab.BambuStudio
+com.prusa3d.PrusaSlicer
+com.spotify.Client
+org.sugarlabs.Paint

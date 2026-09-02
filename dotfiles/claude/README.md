@@ -18,7 +18,7 @@ When a Claude Code session ends, the `session-logger.sh` script is executed to l
       "matcher": {},
       "hooks": [{
         "type": "command",
-        "command": "/home/adam-koszalka/ŻYCIE/VIBECODING/session-logger.sh",
+        "command": "~/ŻYCIE/VIBECODING/session-logger.sh",
         "timeout": 5
       }]
     }]
@@ -57,5 +57,5 @@ Format:
 
 ## Related Files
 
-- `/home/adam-koszalka/ŻYCIE/VIBECODING/session-logger.sh` - Hook script
-- `/home/adam-koszalka/ŻYCIE/VIBECODING/WORK_LOGS` - Session log file
+- `~/ŻYCIE/VIBECODING/session-logger.sh` - Hook script
+- `~/ŻYCIE/VIBECODING/WORK_LOGS` - Session log file

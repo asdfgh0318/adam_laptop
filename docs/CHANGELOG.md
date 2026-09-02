@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-09-02 — GPD Pocket 3 + full replication
+
+- **Fixed:** every `/home/adam-koszalka` path. `auto-update.sh` had been failing silently
+  since 2026-01-30 because `cd` to that path failed under `set -e` before the logger ran.
+- **New:** `setup-pocket3.sh` — 12-phase idempotent installer that turns a fresh 24.04 into a
+  copy of the daily driver: third-party sources + keys, 412 apt packages, 16 snaps, 4 flatpaks,
+  pip, nvm/node 22/pnpm/uv, dotfiles, hardware quirks, custom tools, Doom, ŻYCIE, groups.
+- **New:** `manifests/` — the package lists the installer reads. `package-list.txt` (a 96 KB dpkg
+  dump) was written by `backup-dotfiles.sh` but never read by anything.
+- **New:** `pocket3/` — GPD Pocket 3 panel rotation, touch/stylus matrix, accelerometer, audio
+  (variant-detected), s2idle. Values from wimpysworld/umpc-ubuntu, applied sway-native.
+- **New:** `is_gpd_pocket3()` detection, `02-drivers-pocket3.sh`, routing in `install.sh`.
+- **New:** `dotfiles/config/foot/foot.ini` and `dotfiles/bashrc-additions.sh` (incl. `go()`),
+  which were never backed up. `backup-dotfiles.sh` now captures both and regenerates manifests.
+- **Docs:** `GPD-POCKET3.md`, `MANUAL-CHECKLIST.md`, `LAPTOP-vs-POCKET3.{md,pdf}`.
+- Removed stray `dotfiles/config/doom/plik_emacsa.el`.
+
+
 All notable changes to this setup will be documented in this file.
 
 ## [Unreleased]

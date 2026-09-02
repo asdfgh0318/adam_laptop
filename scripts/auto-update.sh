@@ -1,10 +1,10 @@
 #!/bin/bash
 # auto-update.sh - Automated daily backup to GitHub
-# Run via cron: 0 20 * * * /home/adam-koszalka/ŻYCIE/VIBECODING/adam_laptop/scripts/auto-update.sh
+# Run via cron: 0 20 * * * $HOME/ŻYCIE/VIBECODING/adam_laptop/scripts/auto-update.sh
 
 set -e
 
-REPO_DIR="/home/adam-koszalka/ŻYCIE/VIBECODING/adam_laptop"
+REPO_DIR="$HOME/ŻYCIE/VIBECODING/adam_laptop"
 LOG_FILE="$REPO_DIR/auto-update.log"
 
 # Log with timestamp

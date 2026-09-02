@@ -3,7 +3,7 @@
 # Auto-logs Claude sessions (backup logger)
 # Triggered by Claude Code Stop hook
 
-WORK_LOGS="/home/adam-koszalka/ŻYCIE/VIBECODING/WORK_LOGS"
+WORK_LOGS="$HOME/ŻYCIE/VIBECODING/WORK_LOGS"
 TIME=$(date +%H:%M)
 
 # Read JSON from stdin, extract working directory

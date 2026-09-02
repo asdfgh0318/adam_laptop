@@ -1,0 +1,16 @@
+apple-music-electron
+apple-music-for-linux
+audacity
+brave
+chromium
+code
+cups
+ferdium
+firefox
+prospect-mail
+snap-store
+spotify
+teams-for-linux
+thunderbird
+vlc
+zotero-snap

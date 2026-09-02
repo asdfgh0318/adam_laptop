@@ -63,6 +63,12 @@ is_thinkpad() {
     grep -qi "ThinkPad" /sys/class/dmi/id/product_family 2>/dev/null
 }
 
+# Detect GPD Pocket 3 (DMI: "G1619-03" / "GPD" vendor)
+is_gpd_pocket3() {
+    grep -qiE "G1619-03|Pocket 3" /sys/class/dmi/id/product_name 2>/dev/null || \
+    { grep -qi "GPD" /sys/class/dmi/id/sys_vendor 2>/dev/null && grep -qi "G1619" /sys/class/dmi/id/product_name 2>/dev/null; }
+}
+
 # Detect ThinkPad T480s specifically
 is_thinkpad_t480s() {
     grep -qi "T480s" /sys/class/dmi/id/product_name 2>/dev/null || \
@@ -147,6 +153,8 @@ print_hardware_info() {
         local model
         model=$(cat /sys/class/dmi/id/product_name 2>/dev/null || echo "Unknown")
         log_success "Platform: Lenovo ThinkPad ($model)"
+    elif is_gpd_pocket3; then
+        log_success "Platform: GPD Pocket 3 (portrait panel, needs rotation)"
     else
         log_info "Platform: Generic PC"
     fi

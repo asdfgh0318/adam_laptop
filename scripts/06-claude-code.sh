@@ -54,7 +54,7 @@ else
         "hooks": [
           {
             "type": "command",
-            "command": "/home/adam-koszalka/ŻYCIE/VIBECODING/session-logger.sh",
+            "command": "$HOME/ŻYCIE/VIBECODING/session-logger.sh",
             "timeout": 5
           }
         ]

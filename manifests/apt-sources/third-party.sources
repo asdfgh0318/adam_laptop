@@ -1,0 +1,5 @@
+Enabled: no
+Types: deb
+URIs: cdrom:[Ubuntu 22.04.2 LTS _Jammy Jellyfish_ - Release amd64 (20230223)]/
+Suites: jammy
+Components: main restricted

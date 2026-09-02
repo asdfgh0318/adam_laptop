@@ -1,0 +1,17 @@
+Enabled: no
+Types: deb
+URIs: https://ppa.launchpadcontent.net/cartes/drawing/ubuntu/
+Suites: noble
+Components: main
+Signed-By: -----BEGIN PGP PUBLIC KEY BLOCK-----
+ .
+ mI0ESdelYQEEAJpjiVibjQ9rel3JFa1egPN7HXjFkJr2G2hzM9d7Bviqy8nNK0rQ
+ TpVjQGeFlVPc6RxjD96gbJPdAlwSv8aeySO+DS8z/CqYFhq3prP0U5i6dTYCkt1l
+ w1oH9/b2x63iCVJ45sTuG/g6v5RSPEVjxnjUtcQ/zBVhKO+zTJOXiA3FABEBAAGw
+ DAAAZ3BnAQAAAAAAALQbTGF1bmNocGFkIFBQQSBmb3IgZnJlbmNoeTgysAwAAGdw
+ ZwIAAAAAAACItgQTAQIAIAUCSdelYQIbAwYLCQgHAwIEFQIIAwQWAgMBAh4BAheA
+ AAoJEKfWnpDcMZE2t+8D/1O9I0Oiisjl2xlbVNaMJ6PDbNoRD/bg9sV32nTSZtBl
+ 6PBRUcPcevJs3x8eW6q6sjVyGV2NGGfZe6s+L3L8Tqdyzk3g8duuu9PTZLVUXksx
+ Wma+6bDZGSSi898Qnd6H0Xl6eiFMCnVksjO3/tOztYnJk/WGWtCCRvZbjR4bbMjn
+ sAYAA2dwZwA=
+ -----END PGP PUBLIC KEY BLOCK-----
