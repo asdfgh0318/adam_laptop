@@ -31,14 +31,14 @@ the best Pocket 3 support in the abstract — Arch arguably does — but because
 is *the same five kernel/udev quirks on every distro*, and only one choice also makes the machine a copy
 of the daily driver.
 
-| Distro | Pocket 3 support | Drawbacks | Fit for "copy my laptop" |
-|:----------------|:--------------------------------------------|:-------------------------------------------|:----------|
+| Distro | Pocket 3 support | Drawbacks | Copy fit |
+|:------------------|:------------------------------------|:------------------------------------|:--------------|
 | **Ubuntu 24.04** (any flavour) | `wimpysworld/umpc-ubuntu` is *the* reference tweak set; Ubuntu MATE built its official Pocket 3 image from it. Kernel 6.8 covers both CPU variants. | No official Pocket 3 image since **Ubuntu MATE 21.10** — you apply the script (or these five files) yourself. Script is Xorg-first; its README says Wayland "mileage may vary". | \Y{} identical packages, PPAs, scripts |
 | Ubuntu MATE 21.10 image | Only true out-of-the-box image ever shipped. | 21.10 is EOL since 2022. Kernel 5.13: audio broken on the N6000, needs the HDA override on the 1195G7. | \N{} dead release |
 | Arch | Best-written wiki page for this device; rolling kernel gets fixes first (N6000 audio landed in 6.1). | You maintain it. Not what the 5520 runs. ArchWiki was unreachable for this research (Anubis bot-wall) — its claims here are from search snippets, not read at source. | \N{} package drift |
 | Fedora | Tested alongside Ubuntu 21.10 by Liliputing (2022): wifi, touch, pen, rotation fine; audio needed the same driver-config workaround; webcam choppy. | Same quirks, different package names — nothing from `manifests/` transfers. | \N{} |
 | NixOS | `nixos-hardware` has GPD Pocket profiles (Pocket 1/2; Pocket 3 via community). | Entire config model differs from the 5520. | \N{} |
-| Kali (`defencore/gpd-pocket-3-linux`) | Working rotation/touch/TLP configs for 2021.4. | Its own ToDo lists sound, stylus, multi-touch and sleep as unsolved. | \N{} |
+| Kali (defencore repo) | Working rotation/touch/TLP configs for 2021.4. | Its own ToDo lists sound, stylus, multi-touch and sleep as unsolved. | \N{} |
 
 **Why sway makes Ubuntu the easy case.** The only place the distros genuinely differ is how much
 display-server glue they need. Under Xorg the portrait panel needs a monitor section, a touch
